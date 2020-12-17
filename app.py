@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def root():
+def root() -> str:
     return render_template("root.html")
 
 
