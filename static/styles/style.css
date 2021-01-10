@@ -1,4 +1,13 @@
 .header {
   box-sizing: border-box;
-  display: inline;
+  display: flex;
+}
+
+.header__nav ul {
+  border-bottom: 3px solid #94d8ff;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding-left: 0;
+  width: 150%;
 }
