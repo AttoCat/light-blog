@@ -9,18 +9,21 @@
   </head>
   <body>
     <h1>Light-Blogに登録</h1>
-    <form action="/" method="POST" class="form">
-      <ul>
-        <li>
-          <label for="user_name">登録名</label>
-          <input type="text" id="user_name" />
-        </li>
-        <li>
-          <label for="password">パスワード</label>
-          <input type="password" id="password" />
-        </li>
-        <li><input type="submit" value="登録する" /></li>
-      </ul>
-    </form>
+    <div class="form">
+      <form action="/signup" method="POST">
+        <ul class="form__item">
+          <li>
+            <label for="username">登録名</label>
+            <input type="text" name="username " id="username" />
+          </li>
+          <li>
+            <label for="password">パスワード</label>
+            <input type="password" name="password" id="password" />
+          </li>
+          <li><input type="submit" value="登録する" /></li>
+        </ul>
+      </form>
+      <h2>あなたのブログを、簡単に</h2>
+    </div>
   </body>
 </html>
