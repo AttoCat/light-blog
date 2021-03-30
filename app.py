@@ -3,8 +3,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from lib import database
 
-print(generate_password_hash("Atto2525!"))
-
 app = Flask(__name__)
 
 
@@ -20,12 +18,15 @@ def signup() -> str:
 
 @app.route("/signup", methods=["POST"])
 def post_signup() -> str:
-    print(request.form.get("password"))
-    print(request.form.get("username"))
-    # with database.cursor as cursor:
-    #     sql = "INSERT INTO light_blog.users (name,password) VALUES ($2,$3)"
-    #     cursor.execute(sql,)
-    return render_template("success-signup.html")
+    username = request.form.get("username")
+    password = request.form.get("password")
+    if (not username) or (not password):
+        return render_template("signup.html", alert="ユーザーネーム又はパスワードが入力されていません")
+    with database.cursor as cursor:
+        sql = "INSERT INTO light_blog.users (name,password) VALUES (%s,%s)"
+        cursor.execute(sql, (username, generate_password_hash(password)))
+        database.connection.commit()
+        return render_template("success-signup.html")
 
 
 app.run()
